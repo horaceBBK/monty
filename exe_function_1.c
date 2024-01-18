@@ -50,7 +50,7 @@ void exe_pall(stack_t **head, unsigned int line_number __attribute__((unused)))
  * @line_number: operation line number
  *
  */
-void exe_pint(stack_t **stack, unsigned int line_number)
+void exe_pint(stack_t **head, unsigned int line_number)
 {
 	if (is_empty(stack))
 	{
@@ -66,7 +66,7 @@ void exe_pint(stack_t **stack, unsigned int line_number)
  * @line_number: operation line number
  *
  */
-void exe_swap(stack_t **stack, unsigned int line_number)
+void exe_swap(stack_t **head, unsigned int line_number)
 {
 	if (stack_size(stack) < 2)
 	{
