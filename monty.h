@@ -71,4 +71,4 @@ void exe_rotl(stack_t **stack, unsigned int line_number);
 
 void (*get_exe_function(char *cmd, unsigned int ln))(stack_t **, unsigned int);
 
-#endif}
+#endif /* MONTY_H */
