@@ -1,77 +1,85 @@
 #include "monty.h"
-
 /**
- * exe_push - push operation
- * @stack: pointer to stack head
- * @line_number: operation line number
- *
- */
-void exe_push(stack_t **head, unsigned int line_number)
-{
-	if (extern_param == NULL)
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	push(stack, atoi(extern_param));
-}
-
-/**
- * exe_pop - pop operation
- * @stack: pointer to stack head
- * @line_number: operation line number
- *
- */
-void exe_pop(stack_t **head, unsigned int line_number)
-{
-	if (stack_is_empty(stack))
-	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	pop(stack);
-}
-
-/**
- * exe_pall - print all operation
- * @stack: pointer to stack head
- * @line_number: operation line number
- *
- */
-void exe_pall(stack_t **head, unsigned int line_number __attribute__((unused)))
-{
-	if (!is_empty(stack))
-	pall(stack);
-}
-
-/**
- * exe_pint - print int operation
- * @stack: pointer to stack head
- * @line_number: operation line number
- *
- */
-void exe_pint(stack_t **stack, unsigned int line_number)
-{
-	if (is_empty(stack))
-	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	printf("%d\n", top(stack));
-}
-
-/**
- * exe_swap - swaps the top two elements of the stack
+ * exe_nop - excecute no operation on the stack
  * @stack: pointer to the head of the stack
  * @line_number: operation line number
  *
  */
-void exe_swap(stack_t **stack, unsigned int line_number)
+void exe_nop(stack_t **stack __attribute__((unused)),
+		unsigned int line_number __attribute__((unused)))
+{
+}
+
+/**
+ * exe_add - excecute add operation using top two elements of the stack
+ * @stack: pointer to the head of the stack
+ * @line_number: operation line number
+ *
+ */
+void exe_add(stack_t **stack, unsigned int line_number)
 {
 	if (stack_size(stack) < 2)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	swap(stack);
+	stack_add(stack);
+}
+
+/**
+ * exe_sub - execute subtract operation using top two elements of the stack
+ * @stack: pointer to the head of the stack
+ * @line_number: operation line number
+ *
+ */
+void exe_sub(stack_t **stack, unsigned int line_number)
+{
+	if (stack_size(stack) < 2)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	stack_sub(stack);
+}
+
+/**
+ * exe_div - execute divide operation using top two elements of the stack
+ * @stack: pointer to the head of the stack
+ * @line_number: operation line number
+ *
+ */
+void exe_div(stack_t **stack, unsigned int line_number)
+{
+	if (stack_size(stack) < 2)
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (stack_top(stack) == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	stack_div(stack);
+}
+
+/**
+ * exe_mod - execute modulos operation using top two elements of the stack
+ * @stack: pointer to the head of the stack
+ * @line_number: operation line number
+ *
+ */
+void exe_mod(stack_t **stack, unsigned int line_number)
+{
+	if (stack_size(stack) < 2)
+	{
+		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (stack_top(stack) == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+	exit(EXIT_FAILURE);
+	}
+	stack_mod(stack);
 }

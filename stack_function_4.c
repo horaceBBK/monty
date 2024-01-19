@@ -9,7 +9,7 @@ void stack_rotl(stack_t **head)
 	stack_t *temp = *head;
 	stack_t *i;
 
-	if (!is_empty(head))
+	if (!stack_is_empty(head))
 	{
 		if (temp->next != NULL)
 		{
@@ -32,7 +32,7 @@ void stack_rotr(stack_t **head)
 	stack_t *top = *head;
 	stack_t *i;
 
-	if (!is_empty(head))
+	if (!stack_is_empty(head))
 	{
 		if (top->next != NULL)
 		{

@@ -24,7 +24,7 @@ void exe_mul(stack_t **stack, unsigned int line_number)
  */
 void exe_pchar(stack_t **stack, unsigned int line_number)
 {
-	if (is_empty(stack) == 1)
+	if (stack_is_empty(stack) == 1)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
@@ -43,7 +43,8 @@ void exe_pchar(stack_t **stack, unsigned int line_number)
  * @line_number: operation line number
  *
  */
-void exe_pstr(stack_t **stack, unsigned int line_number __attribute__((unused)))
+void exe_pstr(stack_t **stack,
+	      unsigned int line_number __attribute__((unused)))
 {
 	stack_pstr(stack);
 }
@@ -54,7 +55,8 @@ void exe_pstr(stack_t **stack, unsigned int line_number __attribute__((unused)))
  * @line_number: operation line number
  *
  */
-void exe_rotl(stack_t **stack, unsigned int line_number __attribute__((unused)))
+void exe_rotl(stack_t **stack,
+	      unsigned int line_number __attribute__((unused)))
 {
 	stack_rotl(stack);
 }
@@ -65,7 +67,8 @@ void exe_rotl(stack_t **stack, unsigned int line_number __attribute__((unused)))
  * @line_number: operation line number
  *
  */
-void exe_rotr(stack_t **stack, unsigned int line_number __attribute__((unused)))
+void exe_rotr(stack_t **stack,
+	      unsigned int line_number __attribute__((unused)))
 {
 	stack_rotr(stack);
 }

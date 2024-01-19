@@ -7,7 +7,7 @@
  */
 void (*get_exe_function(char *cmd, unsigned int ln))(stack_t **, unsigned int)
 {
-	func_t dict[] = {
+	instruction_t dict[] = {
 		{"push", exe_push},
 		{"pop", exe_pop},
 		{"pall", exe_pall},
@@ -31,9 +31,9 @@ void (*get_exe_function(char *cmd, unsigned int ln))(stack_t **, unsigned int)
 	{
 		if (cmd == NULL)
 			break;
-		if (strcmp(dict[i].name, cmd) == 0)
-			return (dic[i].function);
+		if (strcmp(dict[c].opcode, cmd) == 0)
+			return (dict[c].f);
 	}
-	fprint(stderr, "L%d: unknown instruction %s\n", ln, cmd);
+	fprintf(stderr, "L%d: unknown instruction %s\n", ln, cmd);
 	exit(EXIT_FAILURE);
 }
